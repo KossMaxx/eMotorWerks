@@ -28,3 +28,5 @@ obj/
 _ReSharper*/
 [Tt]est[Rr]esult*
 .vs/
+packages/Microsoft.Net.Compilers.1.3.2/
+packages/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3/

@@ -1,0 +1,3 @@
+﻿menu_item_home=[home]
+menu_item_manage_roles=[manage roles]
+menu_item_manage_users=[manage users]

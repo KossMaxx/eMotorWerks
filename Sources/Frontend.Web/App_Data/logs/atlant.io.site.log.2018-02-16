@@ -1,0 +1,2 @@
+FATAL 2018-02-16 06:40:41 [1] System.Exception: Test Exception
+   в Frontend.Web.MvcApplication.Application_Start() в E:\Work\eMotorWerks\Sources\Frontend.Web\Global.asax.cs:строка 31

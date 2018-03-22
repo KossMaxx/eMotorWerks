@@ -1,0 +1,8 @@
+﻿title=[test work for emotorwerks. manage roles]
+name_table=[list roles]
+button_new=[new]
+th_name=[name]
+confirmdeleterole_modal_title=[confirm delete role]
+confirmdeleterole_modal_message=[are you sure?]
+confirmdeleterole_modal_button_yes=[yes]
+confirmdeleterole_modal_button_cancel=[cancel]

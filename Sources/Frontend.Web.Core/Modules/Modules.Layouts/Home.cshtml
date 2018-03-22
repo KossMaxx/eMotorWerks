@@ -1,0 +1,45 @@
+﻿@using System.Web.Mvc.Html
+@using System.Web.Optimization
+@using Translations
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>
+            @RenderSection("pagetitle", false)
+        </title>
+        @Styles.Render("~/Libraries/Components/Preloader/css")
+        @Styles.Render("~/Themes/startbootstrap-sb-admin-2/css")
+        @Styles.Render("~/Libraries/Common/css")
+        @RenderSection("stylesheet", false)
+        @RenderSection("headscripts", false)
+    </head>
+    <body>
+        <div id="preloader">        
+            <div id="status">&nbsp;</div>
+        </div>    
+        <div class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    @Html.ActionLink(I18NEngine.GetString("modules.layouts.home", "navbar_brand_link"), "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </div>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <div class="navbar-header navbar-right">
+                        @Html.ActionLink(I18NEngine.GetString("modules.layouts.home", "exit_link"), "Logout", "Accounts", new { area = "" }, new { @class = "navbar-brand" })
+                    </div>                    
+                }
+            </div>
+        </div>
+    
+        @RenderPage("~/Sidebar.cshtml")
+    
+        @RenderBody()
+        @Scripts.Render("~/Themes/startbootstrap-sb-admin-2/js")
+        @Scripts.Render("~/Libraries/Common/js")
+        @RenderSection("bodyscripts", required: false)
+        @Scripts.Render("~/Libraries/Components/Preloader/js")
+    </body>
+</html>

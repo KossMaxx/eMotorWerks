@@ -1,0 +1,28 @@
+﻿@using System.Web.Mvc.Html
+@using System.Web.Optimization
+@using Translations
+
+<aside id="sidebar-menu">
+    <ul class="sidebar-menu_list">
+        <li class="sidebar-menu_item active">
+            <a href="@Url.Action("Index", "Home")">
+                <i class="fa fa-fw fa-home"></i>                
+                <span>@I18NEngine.GetString("modules.layouts.sidebar", "menu_item_home")</span>
+            </a>
+        </li>
+
+        <li class="sidebar-menu_item">
+            <a href="@Url.Action("Index", "TotalRoles")">
+                <i class="fa fa-fw fa-list"></i>
+                <span>@I18NEngine.GetString("modules.layouts.sidebar", "menu_item_manage_roles")</span>
+            </a>
+        </li>
+
+        <li class="sidebar-menu_item">
+            <a href="@Url.Action("Index", "TotalUsers")">
+                <i class="fa fa-fw fa-users"></i>
+                <span>@I18NEngine.GetString("modules.layouts.sidebar", "menu_item_manage_users")</span>
+            </a>
+        </li>
+    </ul>
+</aside>  

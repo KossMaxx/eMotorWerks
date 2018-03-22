@@ -1,0 +1,60 @@
+﻿.red {
+    color: #d9534f;
+}
+
+.blue {
+    color: #2e6da4;
+}
+
+.modal {
+    text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+    .modal:before {
+        display: inline-block;
+        vertical-align: middle;
+        content: " ";
+        height: 100%;
+    }
+}
+
+.modal-dialog {
+    display: inline-block;
+    text-align: left;
+    vertical-align: middle;
+}
+
+#sidebar-menu {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 200px;
+    background: #2e6da4;
+    -webkit-transition: all .3s ease;
+    transition: all .3s ease;
+    z-index: 10;
+}
+
+.sidebar-menu_list {
+    margin: 0;
+    padding: 0;
+    padding-top: 50px;
+}
+
+.sidebar-menu_item {
+    position: relative;
+    list-style: none;
+    width: 200px;
+    border-left: 3px solid #273C42;
+}
+
+.sidebar-menu_item a {
+    padding: 10px 15px;
+    display: block;
+    font-weight: 600;
+    font-size: 14px;
+    color: #F2F2F2;
+    text-decoration: none;
+}

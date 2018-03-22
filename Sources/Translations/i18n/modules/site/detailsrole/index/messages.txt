@@ -1,0 +1,5 @@
+﻿title=[test work for emotorwerks. details role]
+placeholder_input_role_name=[input role name]
+label_select_role_group=[choose the basic roles]
+button_create=[create]
+button_update=[update]

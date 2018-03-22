@@ -1,0 +1,8 @@
+﻿title=[test work for emotorwerks. details user]
+placeholder_input_user_name=[input user name]
+placeholder_input_description=[input description]
+placeholder_input_email=[input email]
+placeholder_input_note=[input note]
+label_select_role_group=[choose the basic roles]
+button_create=[create]
+button_update=[update]

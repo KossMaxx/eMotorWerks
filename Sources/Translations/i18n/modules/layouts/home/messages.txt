@@ -1,0 +1,2 @@
+﻿navbar_brand_link=[Test work for eMotorWerks]
+exit_link=[Exit]

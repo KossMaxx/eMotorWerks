@@ -1,0 +1,100 @@
+﻿@using System.Web.Mvc
+@using System.Web.Mvc.Html
+@using System.Web.Optimization
+@using Translations
+@model Modules.Site.DetailsUser.DetailsUserModel
+
+@{
+    Layout = "~/DetailsPages.cshtml";
+}
+@section pagetitle
+{
+    @I18NEngine.GetMvcHtmlString("modules.site.detailsuser.index", "title")
+}
+
+@{
+    var selectableValue = string.Empty;
+    var actionName = Model.IsUpdate ? "update" : "create";
+}
+
+@section bodyscripts
+{
+    <script>
+        $("#base-roles").multiSelect({ keepOrder: true });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('#user-button-@actionName').on('click', function (e) {
+                var baseRolesValues = [];
+                $("#base-roles :selected").each(function(index) { baseRolesValues.push($(this).val()); });
+                console.log(baseRolesValues);
+                $.Site.Libraries.Common.Preloader.Show();
+                $.Site.Libraries.WebApi.Common.ExecuteAction({
+                    uri: $("#webapi-identity-user-@actionName").attr("href"),
+                    data:
+                    {
+                        UserName: $("#input-user-name").val(),
+                        Description: $("#input-description").val(),
+                        Email: $("#input-email").val(),
+                        Note: $("#input-note").val(),
+                        BaseRoles: baseRolesValues 
+                    },
+                    onAfterAction: function () {
+                        var reloadUri = $("#reload-uri").attr("href");
+                        window.location = reloadUri;
+                    }
+                });
+            });
+
+        });
+    </script>
+}
+
+<a id="webapi-identity-user-create" class="hidden" href="~/api/identity/createuser"></a>
+<a id="webapi-identity-user-update" class="hidden" href="~/api/identity/updateuser"></a>
+<a id="reload-uri" class="hidden" href="@Url.Action("Index", "TotalUsers")"></a>
+<div class="container">
+    <div class="row">          
+        <div class="col-md-offset-4 col-md-4 padding-top-15">
+            <form role="form">
+                <div class="form-group">
+                    <input id="input-user-name" class="form-control" placeholder="@I18NEngine.GetMvcHtmlString("modules.site.detailsuser.index", "placeholder_input_user_name")" value="@Html.Raw(Model.UserName)"/>
+                </div>
+                <div class="form-group">
+                    <input id="input-description" class="form-control" placeholder="@I18NEngine.GetMvcHtmlString("modules.site.detailsuser.index", "placeholder_input_description")" value="@Html.Raw(Model.Description)" />
+                </div> 
+                <div class="form-group">
+                    <input id="input-email" class="form-control" placeholder="@I18NEngine.GetMvcHtmlString("modules.site.detailsuser.index", "placeholder_input_email")" value="@Html.Raw(Model.Email)" />
+                </div> 
+                <div class="form-group">
+                    <input id="input-note" class="form-control" placeholder="@I18NEngine.GetMvcHtmlString("modules.site.detailsuser.index", "placeholder_input_note")" value="@Html.Raw(Model.Note)"/>
+                </div>                
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-offset-4 col-md-4">
+            <label>@I18NEngine.GetMvcHtmlString("modules.site.detailsuser.index", "label_select_role_group")</label>
+            <select id="base-roles" multiple="multiple">
+                @foreach (var baseRole in Model.Roles)
+                {
+                    @{
+                         selectableValue = baseRole.IsSelectable ? "selected=\"selected\"" : "";
+                     }
+                    <option value="@baseRole.RoleName" @selectableValue>@baseRole.RoleName</option>
+                }
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-offset-4 col-md-4 padding-top-15">
+            <div class="row">
+                <div class="col-md-offset-8 col-md-4">
+                    <a id="user-button-@actionName" class="btn btn-primary col-md-12 text-align-left">
+                        <i class="fa fa-fw">@I18NEngine.GetMvcHtmlString("modules.site.detailsuser.index", $"button_{actionName}")</i>
+                    </a>                                                                
+                </div>
+            </div>
+        </div>        
+    </div>
+</div>
